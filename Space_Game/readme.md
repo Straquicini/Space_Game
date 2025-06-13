@@ -1,0 +1,1 @@
+Sistema de pause implementado no javascript da linha 101 a 106

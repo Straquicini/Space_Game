@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jogo de Nave</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="panel">
+  <h2>Bem-vindo ao Space Blaster</h2>
+  <input type="text" id="nickname" placeholder="Seu nickname">
+  <br>
+  <button onclick="startGame()">Jogar</button>
+  <div id="scoreboard">
+    <h3>Scoreboard</h3>
+    <ul id="scores"></ul>
+  </div>
+</div>
+
+<canvas id="gameCanvas" width="500" height="700" style="display:none;"></canvas>
+
+<div id="pauseOverlay">
+  <p id="pauseScore">Pontuação atual: 0</p>
+  <button id="resumeBtn">Continuar</button><br />
+  <button id="exitBtn">Sair para o menu</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
