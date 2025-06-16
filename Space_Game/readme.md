@@ -1,1 +1,2 @@
-Sistema de pause implementado no javascript da linha 101 a 106
+Sistema de pause com um painel implementado no javascript 
+Sistema de telantrasporte da nave ao atingir o limite da tela

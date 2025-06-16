@@ -6,7 +6,7 @@
 
 body {
   font-family: Arial, sans-serif;
-  background: #000;
+  background:url('images/Fundo_Menu.jpg') no-repeat center center fixed; background-size: cover;;
   color: #fff;
   display: flex;
   justify-content: center;
@@ -16,13 +16,13 @@ body {
 }
 
 canvas {
-  background: #111;
+  background: url('images/Fundo_Espacial.png') no-repeat center center fixed; background-size: cover;
   border: 2px solid #fff;
 }
 
 #panel {
   position: absolute;
-  background: #222;
+  background: url('Fundo_Menu.jpg') no-repeat center center;
   padding: 20px;
   border-radius: 10px;
   text-align: center;
