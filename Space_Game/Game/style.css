@@ -6,14 +6,17 @@
 
 body {
   font-family: Arial, sans-serif;
-  background:url('images/Fundo_Menu.jpg') no-repeat center center fixed; background-size: cover;;
+  background: url('images/Fundo_Menu.jpg') no-repeat center center fixed;
+  background-size: cover;
   color: #fff;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: center;  /* Centraliza horizontalmente */
+  align-items: center;      /* Centraliza verticalmente */
   height: 100vh;
   overflow: hidden;
+  margin: 0;
 }
+
 
 canvas {
   background: url('images/Fundo_Espacial.png') no-repeat center center fixed; background-size: cover;
@@ -21,17 +24,38 @@ canvas {
 }
 
 #panel {
-  position: absolute;
-  background: url('Fundo_Menu.jpg') no-repeat center center;
-  padding: 20px;
-  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.75); /* fundo preto translúcido */
+  padding: 30px;
+  border-radius: 15px;
+  width: 320px;
   text-align: center;
+  box-shadow: 0 0 20px #6a1b9a;
+}
+
+#panel h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+  color: #a66cff;
 }
 
 input, button {
-  margin: 10px;
+  margin: 10px 0;
   padding: 10px;
+  width: 90%;
   font-size: 16px;
+  border-radius: 8px;
+  border: none;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #a66cff;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #8e4fd6;
 }
 
 #scoreboard {
