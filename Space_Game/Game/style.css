@@ -92,3 +92,41 @@ button:hover {
 #pauseOverlay button:hover {
   background-color: #0097a7;
 }
+
+/* Game Over Overlay */
+#gameOverOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width:100vw;
+  height:100vh;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+.game-over-content {
+  text-align: center;
+  color: #fff;
+}
+
+.game-over-content h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.game-over-content button {
+  font-size: 1rem;
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: #6600ff;
+  color: #fff;
+  cursor: pointer;
+  border: none;
+}
+
+.game-over-content button:hover {
+  background-color: #8f3dff;
+}
