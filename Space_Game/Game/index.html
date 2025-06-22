@@ -6,30 +6,31 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Space Game</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css"> <!-- Importa o estilo do jogo -->
 </head>
+
 <body>
 
 <div id="panel">
   <h2>SPACE GAME</h2>
-  <input type="text" id="nickname" placeholder="Seu nickname">
+  <input type="text" id="nickname" placeholder="Seu nickname"> <!-- Entrada do nome do jogador -->
   <br>
-  <button onclick="startGame()">Jogar</button>
+  <button onclick="startGame()">Jogar</button> <!-- Inicia o jogo -->
+  
   <div id="scoreboard">
     <h3>Scoreboard</h3>
-    <ul id="scores"></ul>
+    <ul id="scores"></ul> <!-- Lista das pontuações -->
   </div>
 </div>
 
-<canvas id="gameCanvas" width="500" height="700" style="display:none;"></canvas>
+<canvas id="gameCanvas" width="500" height="700" style="display:none;"></canvas> <!-- Área principal do jogo -->
 
 <div id="pauseOverlay">
   <p id="pauseScore">Pontuação atual: 0</p>
-  <button id="resumeBtn">Continuar</button><br />
+  <button id="resumeBtn">Continuar</button>
   <button id="exitBtn">Sair para o menu</button>
 </div>
 
-<!-- Game Over Overlay -->
 <div id="gameOverOverlay">
   <div class="game-over-content">
     <h2>Sua nave foi destruída!</h2>
@@ -37,6 +38,6 @@
   </div>
 </div>
 
-<script src="script.js"></script>
+<script src="script.js"></script> <!-- Script com a lógica do jogo -->
 </body>
 </html>

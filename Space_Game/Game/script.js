@@ -1,3 +1,4 @@
+// Referências principais do DOM
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 const panel = document.getElementById("panel");
@@ -8,6 +9,7 @@ const scoreText = document.getElementById("pauseScore");
 const resumeBtn = document.getElementById("resumeBtn");
 const exitBtn = document.getElementById("exitBtn");
 
+// Estado inicial do jogo
 let player = { x: 230, y: 600, width: 50, height: 60, health: 100 };
 let bullets = [];
 let enemyBullets = [];
@@ -17,53 +19,56 @@ let nickname = '';
 let paused = false;
 let gameInterval = null;
 let enemyInterval = null;
-
 let keyLeft = false;
 let keyRight = false;
 
+// Carregamento de imagens das naves
 const naveImg = new Image();
 naveImg.src = "images/NavePrincipal.png";
-naveImg.onload = () => {};
+
 const enemyImgWeak = new Image();
 enemyImgWeak.src = "images/NaveInimiga1.png";
+
 const enemyImgMedium = new Image();
 enemyImgMedium.src = "images/NaveInimiga2.png";
+
 const enemyImgStrong = new Image();
 enemyImgStrong.src = "images/NaveInimiga3.png";
 
-// Áudios
+// Áudios do jogo
 const backgroundMusic = new Audio("audio/background.mp3");
 backgroundMusic.loop = true;
 backgroundMusic.volume = 0.5;
 
 const shotSound = new Audio("audio/shot.mp3");
-shotSound.volume = 0.5;
-
 const explosionSound = new Audio("audio/explosion.mp3");
-explosionSound.volume = 0.7;
-
 const gameOverMusic = new Audio("audio/gameover-music.mp3");
+const gameOverVoice = new Audio("audio/gameover-voice.mp3");
+
+shotSound.volume = 0.5;
+explosionSound.volume = 0.7;
 gameOverMusic.loop = true;
 gameOverMusic.volume = 0.5;
-
-const gameOverVoice = new Audio("audio/gameover-voice.mp3");
 gameOverVoice.volume = 1.0;
 
-
+// Botão para continuar o jogo
 resumeBtn.onclick = () => {
   paused = false;
   pauseOverlay.style.display = "none";
 };
 
+// Botão para sair e voltar ao menu
 exitBtn.onclick = () => {
   paused = false;
   returnToMenu();
 };
 
+// Desenha o jogador
 function drawPlayer() {
   ctx.drawImage(naveImg, player.x, player.y, player.width, player.height);
 }
 
+// Desenha a barra de vida
 function drawHealthBar() {
   ctx.fillStyle = 'gray';
   ctx.fillRect(10, 40, 100, 10);
@@ -73,13 +78,17 @@ function drawHealthBar() {
   ctx.strokeRect(10, 40, 100, 10);
 }
 
+// Atualiza e desenha projéteis
 function drawBullets() {
+  // Tiros do jogador
   ctx.fillStyle = 'yellow';
   bullets.forEach((b, i) => {
     b.y -= 5;
     if (b.y < 0) bullets.splice(i, 1);
     else ctx.fillRect(b.x, b.y, 5, 10);
   });
+
+  // Tiros dos inimigos
   ctx.fillStyle = 'red';
   enemyBullets.forEach((b, i) => {
     b.y += 4;
@@ -87,6 +96,8 @@ function drawBullets() {
       enemyBullets.splice(i, 1);
     } else {
       ctx.fillRect(b.x, b.y, 4, 10);
+
+      // Colisão com jogador
       if (
         b.x < player.x + player.width &&
         b.x + 4 > player.x &&
@@ -101,25 +112,26 @@ function drawBullets() {
   });
 }
 
+// Atualiza e desenha inimigos
 function drawEnemies() {
   enemies.forEach((e, ei) => {
     e.y += e.speed;
 
+    // Tiro aleatório do inimigo
     if (Math.random() < e.fireChance) {
       enemyBullets.push({ x: e.x + e.size / 2, y: e.y + e.size, damage: e.damage });
     }
 
-    if (e.type === 'weak') {
-      ctx.drawImage(enemyImgWeak, e.x, e.y, e.size, e.size);
-    } else if (e.type === 'medium') {
-      ctx.drawImage(enemyImgMedium, e.x, e.y, e.size, e.size);
-    } else if (e.type === 'strong') {
-      ctx.drawImage(enemyImgStrong, e.x, e.y, e.size, e.size);
-    } else {
+    // Seleção da imagem do inimigo
+    if (e.type === 'weak') ctx.drawImage(enemyImgWeak, e.x, e.y, e.size, e.size);
+    else if (e.type === 'medium') ctx.drawImage(enemyImgMedium, e.x, e.y, e.size, e.size);
+    else if (e.type === 'strong') ctx.drawImage(enemyImgStrong, e.x, e.y, e.size, e.size);
+    else {
       ctx.fillStyle = e.color;
       ctx.fillRect(e.x, e.y, e.size, e.size);
     }
 
+    // Colisão com o jogador
     if (
       e.x < player.x + player.width &&
       e.x + e.size > player.x &&
@@ -132,6 +144,7 @@ function drawEnemies() {
       return;
     }
 
+    // Colisão com projéteis do jogador
     bullets.forEach((b, bi) => {
       if (
         b.x < e.x + e.size &&
@@ -149,12 +162,13 @@ function drawEnemies() {
         }
       }
     });
-    if (e.y > canvas.height) {
-      enemies.splice(ei, 1);
-    }
+
+    // Remove inimigos que saíram da tela
+    if (e.y > canvas.height) enemies.splice(ei, 1);
   });
 }
 
+// Desenha o placar e instruções
 function drawScore() {
   ctx.fillStyle = 'white';
   ctx.font = '20px Arial';
@@ -162,10 +176,11 @@ function drawScore() {
   ctx.fillText('Aperte "P" para pausar', 250, 20);
 }
 
+// Lógica principal de atualização do jogo
 function updateGame() {
   if (paused) return;
 
-  // Movimentação contínua
+  // Movimento do jogador
   if (keyLeft) {
     player.x -= 5;
     if (player.x + player.width < 0) player.x = canvas.width;
@@ -175,6 +190,7 @@ function updateGame() {
     if (player.x > canvas.width) player.x = -player.width;
   }
 
+  // Limpa tela e redesenha
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   drawPlayer();
   drawHealthBar();
@@ -183,6 +199,7 @@ function updateGame() {
   drawScore();
 }
 
+// Gera inimigos aleatoriamente
 function spawnEnemies() {
   if (paused) return;
 
@@ -190,48 +207,22 @@ function spawnEnemies() {
   let enemy;
 
   if (rand < 0.6) {
-    enemy = {
-      x: Math.random() * (canvas.width - 30),
-      y: 0,
-      size: 40,
-      speed: 3,
-      damage: 5,
-      life: 1,
-      color: 'red',
-      fireChance: 0.005,
-      type: 'weak'
-    };
+    enemy = { x: Math.random() * (canvas.width - 30), y: 0, size: 40, speed: 3, damage: 5, life: 1, color: 'red', fireChance: 0.005, type: 'weak' };
   } else if (rand < 0.85) {
-    enemy = {
-      x: Math.random() * (canvas.width - 50),
-      y: 0,
-      size: 50,
-      speed: 2,
-      damage: 10,
-      life: 2,
-      fireChance: 0.007,
-      type: 'medium'
-    };
+    enemy = { x: Math.random() * (canvas.width - 50), y: 0, size: 50, speed: 2, damage: 10, life: 2, fireChance: 0.007, type: 'medium' };
   } else {
-    enemy = {
-      x: Math.random() * (canvas.width - 50),
-      y: 0,
-      size: 80,
-      speed: 1.5,
-      damage: 20,
-      life: 3,
-      color: 'purple',
-      fireChance: 0.01,
-      type: 'strong'
-    };
+    enemy = { x: Math.random() * (canvas.width - 50), y: 0, size: 80, speed: 1.5, damage: 20, life: 3, color: 'purple', fireChance: 0.01, type: 'strong' };
   }
+
   enemies.push(enemy);
 }
 
+// Inicia o jogo
 function startGame() {
   nickname = document.getElementById("nickname").value.trim();
   if (!nickname) return alert("Digite seu nickname");
 
+  // Reset de estados e timers
   panel.style.display = 'none';
   canvas.style.display = 'block';
   player.health = 100;
@@ -246,12 +237,12 @@ function startGame() {
   gameInterval = setInterval(updateGame, 1000 / 60);
   enemyInterval = setInterval(spawnEnemies, 800);
 
-  // Reiniciar e tocar música de fundo
   gameOverMusic.pause();
   gameOverMusic.currentTime = 0;
   startBackgroundMusic();
 }
 
+// Finaliza o jogo
 function endGame() {
   clearInterval(gameInterval);
   clearInterval(enemyInterval);
@@ -278,47 +269,36 @@ function endGame() {
   };
 }
 
+// Salva pontuação no backend
 function saveScore() {
   const data = {
     datascore: new Date().toISOString(),
     nickname,
     score,
-    game: 'Space Game' // nome do seu jogo
+    game: 'Space Game'
   };
   return fetch('http://localhost:3000/api/scores/', {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data),
   }).then(response => {
-    if (!response.ok) {
-      throw new Error('Erro ao salvar o score');
-    }
+    if (!response.ok) throw new Error('Erro ao salvar o score');
     return response.json();
-  }).catch(error => {
-    console.error(error);
-  });
+  }).catch(console.error);
 }
 
+// Atualiza o placar com top 5
 function updateScoreboard() {
   return fetch('http://localhost:3000/api/scores/')
     .then(response => {
-      if (!response.ok) {
-        throw new Error('Erro ao buscar o scoreboard');
-      }
+      if (!response.ok) throw new Error('Erro ao buscar o scoreboard');
       return response.json();
     })
     .then(data => {
-      // Ordena por score e pega top 5
       const sorted = data.sort((a, b) => b.score - a.score).slice(0, 5);
-      scoresList.innerHTML = sorted
-        .map(s => `<li>${s.nickname}: ${s.score}</li>`)
-        .join('');
+      scoresList.innerHTML = sorted.map(s => `<li>${s.nickname}: ${s.score}</li>`).join('');
     })
-    .catch(error => {
-      console.error(error);
-    });
+    .catch(console.error);
 }
 
 // Disparo ao clicar
@@ -330,19 +310,16 @@ canvas.addEventListener("click", () => {
   }
 });
 
-// Teclado
+// Controle de teclas
 window.addEventListener("keydown", (e) => {
   if (e.key === "ArrowLeft") keyLeft = true;
   if (e.key === "ArrowRight") keyRight = true;
 
+  // Alterna pausa
   if (e.key.toLowerCase() === 'p' && canvas.style.display === 'block' && document.activeElement.tagName !== 'INPUT') {
     paused = !paused;
-    if (paused) {
-      scoreText.innerText = `Pontuação: ${score}`;
-      pauseOverlay.style.display = 'block';
-    } else {
-      pauseOverlay.style.display = 'none';
-    }
+    pauseOverlay.style.display = paused ? 'block' : 'none';
+    if (paused) scoreText.innerText = `Pontuação: ${score}`;
   }
 });
 
@@ -351,29 +328,28 @@ window.addEventListener("keyup", (e) => {
   if (e.key === "ArrowRight") keyRight = false;
 });
 
+// Retorna ao menu principal
 function returnToMenu() {
   clearInterval(gameInterval);
   clearInterval(enemyInterval);
-  /*backgroundMusic.pause();
-  backgroundMusic.currentTime = 0;*/
   canvas.style.display = 'none';
   panel.style.display = 'block';
   pauseOverlay.style.display = 'none';
 }
 
+// Inicia música de fundo com fallback para autoplay bloqueado
 function startBackgroundMusic() {
   if (backgroundMusic.paused) {
-    backgroundMusic.play().catch((e) => {
+    backgroundMusic.play().catch(() => {
       console.warn("Autoplay bloqueado. Música será iniciada após interação.");
     });
   }
 }
 
-
+// Garante que a música comece após qualquer clique
 document.body.addEventListener("click", () => {
   startBackgroundMusic();
 }, { once: true });
 
-// Inicia o scoreboard
+// Carrega o placar ao iniciar
 updateScoreboard();
-
