@@ -41,9 +41,6 @@ SpaceGame/
 ├── gameover-music.mp3
 └── gameover-voice.mp3
 
-yaml
-Copiar código
-
 ---
 
 ## 🕹️ Como Jogar
