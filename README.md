@@ -62,9 +62,6 @@ e salvará sua pontuação automaticamente no **scoreboard** (via API local).
 O jogo envia e busca pontuações de uma API local:  
 http://localhost:3000/api/scores/
 
-bash
-Copiar código
-
 ### Estrutura esperada no backend:
 - **Método POST** → Salva uma pontuação:
   ```json
@@ -76,8 +73,6 @@ Copiar código
   }
 Método GET → Retorna uma lista de pontuações:
 
-json
-Copiar código
 [
   { "nickname": "Jogador1", "score": 42 },
   { "nickname": "Jogador2", "score": 35 }
