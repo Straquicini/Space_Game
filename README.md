@@ -3,6 +3,8 @@ Um jogo 2D de nave espacial feito com HTML5, CSS3 e JavaScript .
 Seu objetivo é destruir o maior número possível de inimigos antes que sua nave seja destruída.
 O jogo possui sistema de pontuação, placar, música de fundo, sons e pausa interativa.
 
+---
+
 🪐 Funcionalidades
 🎮 Movimentação fluida do jogador (setas esquerda/direita)
 🔫 Disparo com clique do mouse
@@ -16,6 +18,8 @@ O jogo possui sistema de pontuação, placar, música de fundo, sons e pausa int
 🧩 Estrutura do Projeto
 SpaceGame/ ├── index.html # Estrutura principal da página ├── style.css # Estilos do jogo e do menu ├── script.js # Lógica e mecânica do jogo ├── images/ # Imagens das naves e fundos │ ├── Fundo_Menu.jpg │ ├── Fundo_Espacial.png │ ├── NavePrincipal.png │ ├── NaveInimiga1.png │ ├── NaveInimiga2.png │ ├── NaveInimiga3.png │ └── Logotipo.png └── áudio/ # Trilhas e efeitos sonoros ├── background.mp3 ├── shot.mp3 ├── explosão.mp3 ├── gameover-music.mp3 └── gameover-voice.mp3
 
+---
+
 🕹️ Como Jogar
 Digite seu apelido e clique em Jogar .
 Use como setas ← e → para mover a nave.
@@ -24,6 +28,8 @@ Pressione "P" para pausar o jogo.
 Derrote os inimigos e aumente sua pontuação !
 Quando sua nave for destruída, o jogo exibirá a tela de Game Over
 e salvará sua pontuação automaticamente no placar (via API local).
+
+---
 
 💾 API do Scoreboard
 O jogo envia e busca encontrada de uma API local:
