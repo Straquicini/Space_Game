@@ -41,6 +41,7 @@ SpaceGame/
 ├── gameover-music.mp3
 └── gameover-voice.mp3
 
+
 ---
 
 ## 🕹️ Como Jogar
@@ -113,8 +114,8 @@ A pontuação é incrementada conforme inimigos destruídos.
 
 🧑‍💻 Autor
 Desenvolvido por [Renan Straquicini]
+
 💬 Projeto feito para estudos de HTML5, CSS# e JavaScript.
-📧 Contato: [renan.straquicini09@gmail.com]
 
 🏁 Licença
 Este projeto está sob a licença MIT — sinta-se à vontade para usar e modificar.
