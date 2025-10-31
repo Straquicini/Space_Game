@@ -39,7 +39,7 @@ SpaceGame/\
 ├── shot.mp3\
 ├── explosion.mp3\
 ├── gameover-music.mp3\
-└── gameover-voice.mp3\
+└── gameover-voice.mp3
 
 
 ---
@@ -66,18 +66,18 @@ http://localhost:3000/api/scores/
 ### Estrutura esperada no backend:
 - **Método POST** → Salva uma pontuação:
   ```json
-  {\
-    "datascore": "2025-10-22T15:00:00Z",\
-    "nickname": "Jogador1",\
-    "score": 42,\
-    "game": "Space Game"\
-  }\
+  {
+    "datascore": "2025-10-22T15:00:00Z",
+    "nickname": "Jogador1",
+    "score": 42,
+    "game": "Space Game"
+  }
 Método GET → Retorna uma lista de pontuações:\
 
-[\
+[
   { "nickname": "Jogador1", "score": 42 },\
   { "nickname": "Jogador2", "score": 35 }\
-]\
+]
 💡 Caso não tenha a API, você pode desativar as chamadas fetch() em script.js para jogar offline.
 
 ⚙️ Tecnologias Usadas
