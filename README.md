@@ -22,24 +22,24 @@ O jogo possui sistema de pontuação, scoreboard, música de fundo, sons e pausa
 
 ## 🧩 Estrutura do Projeto
 
-SpaceGame/
+SpaceGame/\
 ├── index.html # Estrutura principal da página\
 ├── style.css # Estilos do jogo e do menu\
 ├── script.js # Lógica e mecânica do jogo\
-├── images/ # Imagens das naves e fundos
-│ ├── Fundo_Menu.jpg
-│ ├── Fundo_Espacial.png
-│ ├── NavePrincipal.png
-│ ├── NaveInimiga1.png
-│ ├── NaveInimiga2.png
-│ ├── NaveInimiga3.png
-│ └── Logo.png
-└── audio/ # Trilhas e efeitos sonoros
-├── background.mp3
-├── shot.mp3
-├── explosion.mp3
-├── gameover-music.mp3
-└── gameover-voice.mp3
+├── images/ # Imagens das naves e fundos\
+│ ├── Fundo_Menu.jpg\
+│ ├── Fundo_Espacial.png\
+│ ├── NavePrincipal.png\
+│ ├── NaveInimiga1.png\
+│ ├── NaveInimiga2.png\
+│ ├── NaveInimiga3.png\
+│ └── Logo.png\
+└── audio/ # Trilhas e efeitos sonoros\
+├── background.mp3\
+├── shot.mp3\
+├── explosion.mp3\
+├── gameover-music.mp3\
+└── gameover-voice.mp3\
 
 
 ---
@@ -60,24 +60,24 @@ e salvará sua pontuação automaticamente no **scoreboard** (via API local).
 
 ## 💾 API do Scoreboard
 
-O jogo envia e busca pontuações de uma API local:  
+O jogo envia e busca pontuações de uma API local:\  
 http://localhost:3000/api/scores/
 
 ### Estrutura esperada no backend:
 - **Método POST** → Salva uma pontuação:
   ```json
-  {
-    "datascore": "2025-10-22T15:00:00Z",
-    "nickname": "Jogador1",
-    "score": 42,
-    "game": "Space Game"
-  }
-Método GET → Retorna uma lista de pontuações:
+  {\
+    "datascore": "2025-10-22T15:00:00Z",\
+    "nickname": "Jogador1",\
+    "score": 42,\
+    "game": "Space Game"\
+  }\
+Método GET → Retorna uma lista de pontuações:\
 
-[
-  { "nickname": "Jogador1", "score": 42 },
-  { "nickname": "Jogador2", "score": 35 }
-]
+[\
+  { "nickname": "Jogador1", "score": 42 },\
+  { "nickname": "Jogador2", "score": 35 }\
+]\
 💡 Caso não tenha a API, você pode desativar as chamadas fetch() em script.js para jogar offline.
 
 ⚙️ Tecnologias Usadas
