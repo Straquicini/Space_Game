@@ -78,6 +78,7 @@ Método GET → Retorna uma lista de pontuações:\
   { "nickname": "Jogador1", "score": 42 },\
   { "nickname": "Jogador2", "score": 35 }\
 ]\
+
 💡 Caso não tenha a API, você pode desativar as chamadas fetch() em script.js para jogar offline.
 
 ⚙️ Tecnologias Usadas
