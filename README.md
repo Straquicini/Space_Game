@@ -23,9 +23,9 @@ O jogo possui sistema de pontuação, scoreboard, música de fundo, sons e pausa
 ## 🧩 Estrutura do Projeto
 
 SpaceGame/
-├── index.html # Estrutura principal da página
-├── style.css # Estilos do jogo e do menu
-├── script.js # Lógica e mecânica do jogo
+├── index.html # Estrutura principal da página\
+├── style.css # Estilos do jogo e do menu\
+├── script.js # Lógica e mecânica do jogo\
 ├── images/ # Imagens das naves e fundos
 │ ├── Fundo_Menu.jpg
 │ ├── Fundo_Espacial.png
