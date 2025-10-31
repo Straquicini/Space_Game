@@ -74,10 +74,10 @@ http://localhost:3000/api/scores/
   }
 Método GET → Retorna uma lista de pontuações:\
 
-[
+[\
   { "nickname": "Jogador1", "score": 42 },\
   { "nickname": "Jogador2", "score": 35 }\
-]
+]\
 💡 Caso não tenha a API, você pode desativar as chamadas fetch() em script.js para jogar offline.
 
 ⚙️ Tecnologias Usadas
@@ -92,11 +92,11 @@ Fetch API → comunicação com o backend
 Áudio HTML5 → efeitos sonoros e música
 
 🔊 Controles
-Ação	Tecla / Botão
-Mover para a esquerda	⬅️ seta esquerda
-Mover para a direita	➡️ seta direita
-Atirar	🖱️ clique do mouse
-Pausar / Continuar	🔤 tecla "P"
+Ação	Tecla / Botão\
+Mover para a esquerda	⬅️ seta esquerda\
+Mover para a direita	➡️ seta direita\
+Atirar	🖱️ clique do mouse\
+Pausar / Continuar	🔤 tecla "P"\
 Voltar ao menu	botão “Sair para o menu”
 
 🧠 Lógica do Jogo
@@ -118,6 +118,6 @@ Desenvolvido por [Renan Straquicini]
 💬 Projeto feito para estudos de HTML5, CSS3 e JavaScript.
 
 🏁 Licença
-Este projeto está sob a licença MIT — sinta-se à vontade para usar e modificar.
+Este projeto está sob a licença MIT — sinta-se à vontade para usar e modificar.\
 Créditos de imagens e áudios pertencem aos seus respectivos autores.
 
